@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Form from './components/form'
+import PhoneList from './components/phoneList'
+
+
 
 function App() {
+
+  const [phoneL,setPhoneL]=useState([]);
+  const clickHandler=(name,phone)=>{
+    let tmp=[...phoneL];
+    tmp.push({name,phone})
+    setPhoneL(tmp);
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+     <Form clickHandler={clickHandler} phoneL={phoneL}></Form>
+     <PhoneList phoneL={phoneL}></PhoneList>
+
+   </div>
   );
 }
 
