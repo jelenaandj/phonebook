@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+
 // import Phone from './phone';
 
 const Form = (props) => {
     let phoneL = props.phoneL;
     const [newName, setNewName] = useState('');
     const [newPhone, setNewPhone] = useState('');
+    const [error, setError] = useState('');
+
     let clickHandler = props.clickHandler;
-    let phoneno = /^\+?([0-9]{3})\)?[ ]?([0-9]{9})$/;
+    //let phoneno = /^\+?([0-9]{3})\)?[ ]?([0-9]{9})$/;
+    let phoneno = /^\+[0-9]{3}\s[0-9]{9}/;
 
     const handleInput = (e) => {
+        setError("");
         if (newName !== '' && newPhone !== '') {
 
             if (newPhone.match(phoneno)) {
@@ -28,14 +33,16 @@ const Form = (props) => {
                 } else {
                     console.log(`name${newName}${newPhone}`);
                     clickHandler(newName, newPhone);
-
                     // alert('Ne postoji, dodajemo');
                 }
             } else {
-                clickHandler('Number has to be','+ххх ххххххххх format');
+                setError('Number has to be +ххх ххххххххх format')
+                // clickHandler('Number has to be','+ххх ххххххххх format');
+
             }
         } else {
-            clickHandler('Error!', 'Error!');
+            setError('Error!')
+            //clickHandler('Error!', 'Error!');
         }
         e.preventDefault();
     }
@@ -60,6 +67,8 @@ const Form = (props) => {
             <input type='text' id='name' placeholder='name' onChange={onNameChange} />
             <input type='text' id='phone' placeholder='+ххх ххххххххх' onChange={onPhoneChange} />
             <button type='submit' onClick={handleInput} >SUBMIT</button>
+            <br/>
+            <label>{error}</label>
         </form>
     );
 }

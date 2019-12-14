@@ -20,7 +20,6 @@ function App() {
 
   // }
 
-
   return (
    <div>
      <Form clickHandler={clickHandler} phoneL={phoneL} setPhoneL={setPhoneL}></Form>
