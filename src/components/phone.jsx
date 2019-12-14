@@ -1,15 +1,14 @@
 import React from 'react';
 
-
 const Phone=(props)=>{
     // let {phoneL}=props;
-    let {list}=props;
+    let {item}=props;
 
     return(
         <div>
-            <label>{list.name}</label>
+            <label >{item.name}</label>
             <br/>
-            <label>{list.phone}</label>
+            <label >{item.phone}</label>
             <hr/>
         </div>
     );
