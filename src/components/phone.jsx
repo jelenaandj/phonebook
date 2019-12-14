@@ -2,13 +2,14 @@ import React from 'react';
 
 
 const Phone=(props)=>{
-    let {phoneL}=props;
+    // let {phoneL}=props;
+    let {list}=props;
 
     return(
         <div>
-            <label>{phoneL.name}</label>
+            <label>{list.name}</label>
             <br/>
-            <label>{phoneL.phone}</label>
+            <label>{list.phone}</label>
             <hr/>
         </div>
     );
