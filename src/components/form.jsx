@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// import Phone from './phone';
 
 const Form = (props) => {
     let phoneL = props.phoneL;
@@ -9,7 +8,6 @@ const Form = (props) => {
     const [error, setError] = useState('');
 
     let clickHandler = props.clickHandler;
-    //let phoneno = /^\+?([0-9]{3})\)?[ ]?([0-9]{9})$/;
     let phoneno = /^\+[0-9]{3}\s[0-9]{9}/;
 
     const handleInput = (e) => {
@@ -67,6 +65,7 @@ const Form = (props) => {
             <input type='text' id='name' placeholder='name' onChange={onNameChange} />
             <input type='text' id='phone' placeholder='+ххх ххххххххх' onChange={onPhoneChange} />
             <button type='submit' onClick={handleInput} >SUBMIT</button>
+            {/* <button type='submit' onClick={() => clickHandler(ime, broj)} >SUBMIT</button> */}
             <br/>
             <label>{error}</label>
         </form>
