@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Alert from 'react-bootstrap/Alert'
 
 
-const Form = (props) => {
+const Forms = (props) => {
     let phoneL = props.phoneL;
     const [newName, setNewName] = useState('');
     const [newPhone, setNewPhone] = useState('');
@@ -16,9 +20,9 @@ const Form = (props) => {
 
             if (newPhone.match(phoneno)) {
                 let tmp = [...phoneL]
-                console.log(tmp)
+                // console.log(tmp)
                 tmp = tmp.filter(x => newName === x.name);
-                console.log(tmp)
+                // console.log(tmp)
 
                 if (tmp.length > 0) {
                     // alert('Pitanje');
@@ -29,7 +33,7 @@ const Form = (props) => {
                         clickHandler(newName, newPhone);
                     }
                 } else {
-                    console.log(`name${newName}${newPhone}`);
+                    // console.log(`name${newName}${newPhone}`);
                     clickHandler(newName, newPhone);
                     // alert('Ne postoji, dodajemo');
                 }
@@ -61,14 +65,39 @@ const Form = (props) => {
 
     //////
     return (
-        <form >
-            <input type='text' id='name' placeholder='name' onChange={onNameChange} />
-            <input type='text' id='phone' placeholder='+ххх ххххххххх' onChange={onPhoneChange} />
-            <button type='submit' onClick={handleInput} >SUBMIT</button>
-            {/* <button type='submit' onClick={() => clickHandler(ime, broj)} >SUBMIT</button> */}
-            <br/>
-            <label>{error}</label>
-        </form>
+   <div style={{width:'40%',margin:'10%',}}>
+
+ 
+
+  <InputGroup className="mb-3">
+    <FormControl onChange={onNameChange}
+      placeholder="Name"
+      aria-label="Name"
+      aria-describedby="basic-addon2"
+    />
+    <FormControl onChange={onPhoneChange}
+      placeholder="Number +ххх ххххххххх"
+      aria-label="Phone number"
+      aria-describedby="basic-addon2"
+    />
+    <InputGroup.Append>
+      <Button onClick={handleInput} variant="outline-secondary">Submit</Button>
+    </InputGroup.Append>
+  </InputGroup>
+
+  {error&&<Alert variant='danger' style={{width:'fit-content'}}>
+  {error}
+  </Alert>}
+
+</div>
+        // <form >
+        //     <input type='text' id='name' placeholder='name' onChange={onNameChange} />
+        //     <input type='text' id='phone' placeholder='+ххх ххххххххх' onChange={onPhoneChange} />
+        //     <button type='submit' onClick={handleInput} >SUBMIT</button>
+        //     {/* <button type='submit' onClick={() => clickHandler(ime, broj)} >SUBMIT</button> */}
+        //     <br/>
+        //     <label>{error}</label>
+        // </form>
     );
 }
-export default Form
+export default Forms;
